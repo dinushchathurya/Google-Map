@@ -1,0 +1,10 @@
+1.First you have to go to the Google Cloud Platform Console.
+  Follow this link to obtain GOOGLE API KEY ( "https://console.cloud.google.com/")
+2.From the project drop down menu, select or create the project for which you want to add an API KEY
+3.From the navigation menu, select APIs & Services and then go to the Credentials
+4.On the Credential page, Click Create credentials and then API key
+  The API key created dialog box displays your new key.
+  copy that code and use wherever you want
+  By using Dashboard you can enable services like Javascript support for your api
+	
+	

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+    <div style="width:100%;height:100px;float:left;">
+        <h1>Getting Latitude & Longitude from Google Map</h1>
+    </div>
+    <center>
+        <h3>Click wherever you want to add a marker</h3>
+    </center>
+    <div id="map" style="width:60%;height:500px;float:left;"></div>
+    <div id="map" style="width:15%;height:500px;float:left;"></div>
+
+    <div id="map" style="width:25%;height:500px;float:left;">
+
+
+        <table id="loacationTable" border="1" cellspacing="2">
+            <tr>
+                <th>Location Number</th>
+                <th>Latitude</th>
+                <th>Longitute</th>
+            </tr>
+        </table>
+    </div>
+
+
+    <script>
+
+
+        var getLat;
+        var getLon;
+        var x = 1;
+
+
+        function myMap() {
+            var mapCanvas = document.getElementById("map");
+            var myCenter = new google.maps.LatLng(6.8210555, 80.0405499);
+            var mapOptions = { center: myCenter, zoom: 12 };
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+            google.maps.event.addListener(map, 'click', function (event) {
+                placeMarker(map, event.latLng);
+            });
+
+
+            google.maps.event.addListener(map, 'click', function (event) {
+
+
+
+                var table = document.getElementById("loacationTable");
+                var row = table.insertRow(x);
+
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+
+                cell2.innerHTML = event.latLng.lat();
+                cell3.innerHTML = event.latLng.lng();
+                cell1.innerHTML = x;
+
+
+                x++;
+
+
+                document.getElementById("x").innerHTML = x;
+
+            });
+
+        }
+
+
+        function placeMarker(map, location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map, animation: google.maps.Animation.DROP
+            });
+
+
+            var infowindow = new google.maps.InfoWindow({
+                content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+            });
+            infowindow.open(map, marker);
+
+
+        }
+    </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=(YOUR API KEY)&callback=myMap"></script>
+    <div style="width:100%;height:50px;float:left;">
+    </div>
+</body>
+</html>
